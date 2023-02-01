@@ -1,9 +1,74 @@
 // customize some Bootstrap variables
-$primary: darken(#428bca, 20%);
+$primary: #6949ff;
+$secondary: #c3b6ff;
+$success: #12d18e;
+$danger: #f75555;
+$light: #f0edff;
+$dark: #212121;
+
+$blueOption: #3779ff;
+$blueOptionStrong: #295ecc;
+$redOption: #f75555;
+$redOptionStrong: #ea1e61;
+$greenOption: #12d18e;
+$greenOptionStrong: #00b777;
+$yellowOption: #ff981f;
+$yellwOptionStrong: #f48400;
+
 
 // the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";
 
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Roboto:wght@300&display=swap');
+
 body {
-    background-color: lightgray;
+    background-color: $light;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: $dark;
+    font: 300 3em Itim;
+    margin: 1em;
+}
+
+.btn {
+    font: 300 3em Itim;
+    margin: 1em;
+    box-shadow: $secondary 0.1em 0.1em;
+    border-radius: 0.5em;
+}
+
+.coloredOptions {
+    column-gap: 1em;
+    row-gap: 1em;
+}
+
+.blueOption {
+    height: 4em;
+    background-color: $blueOption;
+    box-shadow: $blueOptionStrong 0.2em 0.2em;
+    border-radius: 0.5em;
+}
+
+.redOption {
+    height: 4em;
+    background-color: $redOption;
+    box-shadow: $redOptionStrong 0.2em 0.2em;
+    border-radius: 0.5em;
+}
+
+.greenOption {
+    height: 4em;
+    background-color: $greenOption;
+    box-shadow: $greenOptionStrong 0.2em 0.2em;
+    border-radius: 0.5em;
+}
+
+.yellowOption {
+    height: 4em;
+    background-color: $yellowOption;
+    box-shadow: $yellwOptionStrong 0.2em 0.2em;
+    border-radius: 0.5em;
 }

@@ -4,7 +4,12 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Bienvenue sur Good Game Quiz</h1>
-
-
+	<main class="container text-center">
+		<img src="{{ asset('build/images/ggquiz-logo.png') }}" alt="Good Game Quizz">
+		<h1>Bienvenue sur GG Quiz</h1>
+		<h2>Jouez, Gagnez, Recommencez !</h2>
+		<a href="{{ path('app_question') }}">
+			<button class="btn btn-primary">JOUER</button>
+		</a>
+	</main>
 {% endblock %}
