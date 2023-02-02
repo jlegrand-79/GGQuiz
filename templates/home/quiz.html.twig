@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quiz Astérix
+{% endblock %}
+
+{% block body %}
+	<main class="container p-0 text-center">
+		<h1>Quiz Astérix</h1>
+		<div class="row justify-content-center m-auto">
+			<div class="col-12">
+				<img src="{{ asset('build/images/asterix.svg') }}" alt="Astérix" class="quiz-cover">
+			</div>
+			<div class="col-12">
+				<h2>
+					Connaissez-vous bien les aventures des gaulois les plus célèbres du monde ?<br>
+				</h2>
+				<p>
+					Nous vous proposons un quiz autour de l'univers d'Astérix et Obélix afin de nous replonger dans les bandes dessinées, les films d'animation et les films de la franchise.<br>
+					Les questions de ce quiz portent tous les personnages hauts en couleur imaginés par Albert Uderzo et René Goscinny comme Assurancetourix, Idéfix, Panoramix, ou bien encore la belle Falbala.<br>
+					Ce quiz est idéal pour les grands enfants qui ont grandi avec ces héros bien français.<br>
+					Malheureusement, la potion magique n'est pas acceptée pour répondre correctement aux questions, alors bon courage et bon quiz à tous.
+				</p>
+			</div>
+		</div>
+		<div class="col-12">
+			<a href="{{ path('app_question') }}">
+				<button class="btn btn-primary">COMMENCER</button>
+			</a>
+		</div>
+	</main>
+{% endblock %}
