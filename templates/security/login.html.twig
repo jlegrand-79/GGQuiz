@@ -1,19 +1,43 @@
 {% extends 'base.html.twig' %}
 
+{% block header %}
+	{% include '_navbar.html.twig' %}
+{% endblock %}
+
 {% block body %}
-	{% if error %}
-		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-	{% endif %}
+	<div class="container security-form">
+		<h1>Identification</h1>
+		<div class="row">
+			<div class="col">
 
-	<form action="{{ path('app_login') }}" method="post">
-		<label for="username">Pseudo</label>
-		<input type="text" id="username" name="_username" value="{{ last_username }}">
+				{% if error %}
+					<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+				{% endif %}
 
-		<label for="password">Mot de passe:</label>
-		<input type="password" id="password" name="_password">
+				<form class="form-group" action="{{ path('app_login') }}" method="post">
 
-		<input type="hidden" name="_target_path" value="{{ path('app_quiz') }}">
+					<div class="form-group">
+						<label class="m-1 p-1" for="username">Pseudo</label>
+						<input class="form-control m-1 p-1" type="text" id="username" name="_username" value="{{ last_username }}" placeholder="votre pseudo">
+					</div>
 
-		<button type="submit">Se connecter</button>
-	</form>
+					<div class="form-group">
+						<label class="m-1 p-1" for="password">Mot de passe</label>
+						<input class="form-control m-1 p-1" type="password" id="password" name="_password">
+					</div>
+
+					<input type="hidden" name="_target_path" value="{{ path('app_quiz') }}" placeholder="votre mot de passe">
+
+					<button class="btn btn-primary" type="submit">S'identifier</button>
+				</form>
+			</div>
+		</div>
+
+		<div>
+			<p>Pas encore de compte ?</p>
+			<p>
+				<a href="{{ path('app_register') }}">S'inscrire</a>
+			</p>
+		</div>
+	</div>
 {% endblock %}

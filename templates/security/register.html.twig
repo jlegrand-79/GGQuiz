@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription
+{% endblock %}
+
+{% block header %}
+	{% include '_navbar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+	<div class="container security-form">
+		<h1>Inscription</h1>
+		<div class="row">
+			<div class="col">
+
+				{{ form_start(registrationForm) }}
+
+				<div class="form-group">
+					{{ form_label(registrationForm.pseudo) }}
+					{{ form_widget(registrationForm.pseudo) }}
+				</div>
+
+				<div class="form-group">
+					{{ form_label(registrationForm.plainPassword) }}
+					{{ form_widget(registrationForm.plainPassword) }}
+				</div>
+
+				<button type="submit" class="btn btn-primary">S'inscrire</button>
+				{{ form_end(registrationForm) }}
+			</div>
+		</div>
+		<div>
+			<p>Déjà un compte ?</p>
+			<p>
+				<a href="{{ path('app_login') }}">S'identifier</a>
+			</p>
+		</div>
+	</div>
+
+{% endblock %}

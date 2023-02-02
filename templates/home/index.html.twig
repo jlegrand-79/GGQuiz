@@ -3,10 +3,11 @@
 {% block title %}Bienvenue sur Good Game Quiz
 {% endblock %}
 
+{% block header %}
+	<img src="{{ asset('build/images/ggquiz-logo.png') }}" alt="Good Game Quizz">
+{% endblock %}
+
 {% block body %}
-	<header>
-		<img src="{{ asset('build/images/ggquiz-logo.png') }}" alt="Good Game Quizz">
-	</header>
 	<main class="container text-center">
 		<h1>Let's have
 			<br>
@@ -20,6 +21,12 @@
 		</a>
 	</main>
 	<footer>
-		<a href="{{ path('app_login') }}">admin</a>
+		<div>
+			<p>
+				<a href="{{ path('app_login') }}">S'identifier</a>
+				|
+				<a href="{{ path('app_register') }}">S'inscrire</a>
+			</p>
+		</div>
 	</footer>
 {% endblock %}
