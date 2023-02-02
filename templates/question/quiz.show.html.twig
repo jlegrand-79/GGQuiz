@@ -8,21 +8,33 @@
 {% endblock %}
 
 {% block body %}
-	<main class="container-fluid quiz-question p-0 text-center">
-		<h1>{{ question.question }}</h1>
+	<main class="container quiz-question p-0 text-center">
+		<div class="row justify-content-center m-auto">
+			<div class="col-10">
+				<h1>{{ question.question }}</h1>
+			</div>
+		</div>
+		{% if question.picture %}
+			<div class="row justify-content-center m-auto">
+
+				<div class="col-10">
+					<img class="question-picture" src="{{ asset('build/images/' ~ question.picture) }}" alt="{{ question.answer1 }}">
+				</div>
+			</div>
+		{% endif %}
 		<div class="row colored-options justify-content-center m-auto">
-			<div class="col-12 col-lg-5 option blue">{{ question.answer1 }}</div>
-			<div class="col-12 col-lg-5 option red">{{ question.answer2 }}</div>
-			<div class="col-12 col-lg-5 option green">{{ question.answer3 }}</div>
-			<div class="col-12 col-lg-5 option yellow">{{ question.answer4 }}</div>
+			<div class="col-10 col-lg-5 option blue">{{ question.answer1 }}</div>
+			<div class="col-10 col-lg-5 option red">{{ question.answer2 }}</div>
+			<div class="col-10 col-lg-5 option green">{{ question.answer3 }}</div>
+			<div class="col-10 col-lg-5 option yellow">{{ question.answer4 }}</div>
 		</div>
 
+		<div class="row justify-content-center m-auto">
+			<div class="col-10">
 				<a href="{{ path('app_quiz_question', {'id': next_question.id}) }}">
-			<button class="btn btn-primary" type="submit">Suivante</button>
-		</a>
-
-		<pre>
-			{{ dump(question) }}
-		</pre>
+					<button class="btn btn-primary" type="submit">Suivante</button>
+				</a>
+			</div>
+		</div>
 	</main>
 {% endblock %}
