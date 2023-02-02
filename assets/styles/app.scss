@@ -31,23 +31,23 @@ body {
 }
 
 h1 {
-    font-size: 5em;
+    font-size: 2em;
     margin: 1em;
 }
 
 h2 {
-    font-size: 4em;
+    font-size: 1.5em;
     color: $primary;
     margin: 0.5em;
 }
 
 p {
-    font-size: 3em;
+    font-size: 1em;
     margin: 0.5em;
 }
 
 .btn {
-    font-size: 3em;
+    font-size: 2em;
     margin: 1em;
     box-shadow: $secondary 0.1em 0.1em;
     border-radius: 0.5em;
@@ -93,4 +93,10 @@ p {
 
 .logout-picto {
     color: $primary;
+}
+
+.security-form {
+    position: relative;
+    top: 80px;
+    max-width: 320px;
 }
