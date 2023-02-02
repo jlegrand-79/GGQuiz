@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Question;
+use App\Repository\QuestionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class HomeController extends AbstractController
 {
@@ -15,8 +18,12 @@ class HomeController extends AbstractController
     }
 
     #[Route('/quiz', name: 'app_quiz')]
-    public function quiz(): Response
+    #[IsGranted('ROLE_USER')]
+    public function quiz(QuestionRepository $questionRepository): Response
     {
-        return $this->render('home/quiz.html.twig');
+        $questions = $questionRepository->findAll();
+        return $this->render('home/quiz.html.twig', [
+            'question' => $questions[0],
+        ]);
     }
 }
