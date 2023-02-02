@@ -31,10 +31,11 @@
 			</div>
 		{% endif %}
 		<div class="row colored-options justify-content-center m-auto">
-			<div class="col-10 col-lg-5 option blue">{{ question.answer1 }}</div>
-			<div class="col-10 col-lg-5 option red">{{ question.answer2 }}</div>
-			<div class="col-10 col-lg-5 option green">{{ question.answer3 }}</div>
-			<div class="col-10 col-lg-5 option yellow">{{ question.answer4 }}</div>
+			<div class="col-10 col-lg-5 option blue" id="answer1">{{ question.answer1 }}</div>
+			<div class="col-10 col-lg-5 option red" id="answer2">{{ question.answer2 }}</div>
+			<div class="col-10 col-lg-5 option green" id="answer3">{{ question.answer3 }}</div>
+			<div class="col-10 col-lg-5 option yellow" id="answer4">{{ question.answer4 }}</div>
+			<div class="d-none" id="correct-answer">{{ question.correctAnswer }}</div>
 		</div>
 		{% if next_question is defined %}
 			<div class="row justify-content-center m-auto">
