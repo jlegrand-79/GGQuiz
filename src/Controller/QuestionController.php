@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Validator\Constraints\Length;
 
 #[Route('/question')]
 class QuestionController extends AbstractController
@@ -23,10 +24,16 @@ class QuestionController extends AbstractController
         ]);
     }
 
-    #[Route('/test', name: 'app_question_test')]
-    public function question(): Response
+    #[Route('/quiz/{id}', name: 'app_quiz_question')]
+    #[IsGranted('ROLE_USER')]
+    public function quizShow(int $id, QuestionRepository $questionRepository): Response
     {
-        return $this->render('home/question.html.twig');
+        $question = $questionRepository->findOneById($id);
+        $nextQuestion = $questionRepository->findOneById($question->getId() + 1);
+        return $this->render('question/quiz.show.html.twig', [
+            'question' => $question,
+            'next_question' => $nextQuestion,
+        ]);
     }
 
 
