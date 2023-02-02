@@ -28,13 +28,22 @@
 			<div class="col-10 col-lg-5 option green">{{ question.answer3 }}</div>
 			<div class="col-10 col-lg-5 option yellow">{{ question.answer4 }}</div>
 		</div>
-
-		<div class="row justify-content-center m-auto">
-			<div class="col-10">
-				<a href="{{ path('app_quiz_question', {'id': next_question.id}) }}">
-					<button class="btn btn-primary" type="submit">Suivante</button>
-				</a>
+		{% if next_question is defined %}
+			<div class="row justify-content-center m-auto">
+				<div class="col-10">
+					<a href="{{ path('app_quiz_question', {'id': next_question.id}) }}">
+						<button class="btn btn-primary" type="submit">Suivante</button>
+					</a>
+				</div>
 			</div>
-		</div>
+		{% else %}
+			<div class="row justify-content-center m-auto">
+				<div class="col-10">
+					<a href="{{ path('app_quiz_result') }}">
+						<button class="btn btn-primary" type="submit">Résultats</button>
+					</a>
+				</div>
+			</div>
+		{% endif %}
 	</main>
 {% endblock %}

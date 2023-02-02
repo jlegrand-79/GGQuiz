@@ -30,12 +30,26 @@ class QuestionController extends AbstractController
     {
         $question = $questionRepository->findOneById($id);
         $nextQuestion = $questionRepository->findOneById($question->getId() + 1);
+
+        if (!$nextQuestion) {
+            return $this->render('question/quiz.show.html.twig', [
+                'question' => $question,
+            ]);
+        }
+
         return $this->render('question/quiz.show.html.twig', [
             'question' => $question,
             'next_question' => $nextQuestion,
         ]);
     }
 
+
+    #[Route('/result', name: 'app_quiz_result')]
+    #[IsGranted('ROLE_USER')]
+    public function quizResult(): Response
+    {
+        return $this->render('question/quiz.result.html.twig');
+    }
 
     #[Route('/new', name: 'app_question_new', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_ADMIN')]
