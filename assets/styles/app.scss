@@ -60,9 +60,14 @@ p {
 }
 
 .option {
-    height: 4em;
     border-radius: 0.5em;
     padding: 0;
+    font-size: 2em;
+    color: $light;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .option.blue {
@@ -112,4 +117,18 @@ p {
 .quiz-question {
     position: relative;
     top: 80px;
+}
+
+.question-picture {
+    max-width: 360px;
+    max-width: 50vw;
+    margin-top: 0;
+    margin-bottom: 2em;
+}
+
+.result-picture {
+    max-width: 360px;
+    max-width: 100%;
+    margin-top: 0;
+    margin-bottom: 2em;
 }
