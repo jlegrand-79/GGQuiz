@@ -27,9 +27,15 @@
 			</div>
 		</div>
 		<div class="col-12">
-			<a href="{{ path('app_question_test') }}">
-				<button class="btn btn-primary">COMMENCER</button>
-			</a>
+			{% if is_granted("ROLE_ADMIN")%}
+				<a href="{{ path('app_question_index') }}">
+					<button class="btn btn-primary">ADMINISTRER</button>
+				</a>
+			{% else %}
+				<a href="{{ path('app_quiz_question', {'id': question.id}) }}">
+					<button class="btn btn-primary">COMMENCER</button>
+				</a>
+			{% endif %}
 		</div>
 	</main>
 {% endblock %}
