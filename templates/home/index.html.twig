@@ -4,29 +4,38 @@
 {% endblock %}
 
 {% block header %}
-	<img src="{{ asset('build/images/ggquiz-logo.png') }}" alt="Good Game Quizz">
+
+	<img src="{{ asset('build/images/ggquiz-logo.png') }}" alt="Good Game Quizz" class="ggq-logo">
 {% endblock %}
 
 {% block body %}
 	<main class="container text-center">
-		<h1>Let's have
-			<br>
-			some fun
-			<br>
-			with a
-			<br>
-			Good Game !</h1>
-		<a href="{{ path('app_login') }}">
-			<button class="btn btn-primary">JOUER</button>
-		</a>
-	</main>
-	<footer>
-		<div>
-			<p>
-				<a href="{{ path('app_login') }}">S'identifier</a>
-				|
-				<a href="{{ path('app_register') }}">S'inscrire</a>
-			</p>
-		</div>
-	</footer>
-{% endblock %}
+		<h1>
+			{% if app.user %}
+				Happy to see you here
+				<span class="pseudo">{{ app.user.pseudo }},
+				</span>
+				<br>
+			{% endif %}
+			Have a Good Game !</h1>
+		{% if app.user %}
+			<a href="{{ path('app_quiz') }}">
+			{% else %}
+				<a href="{{ path('app_login') }}">
+				{% endif %}
+				<button class="btn btn-primary">JOUER</button>
+			</a>
+		</main>
+		{% if app.user %}
+			{% else %}
+				<footer>
+					<div>
+						<p>
+							<a href="{{ path('app_login') }}">S'identifier</a>
+							|
+							<a href="{{ path('app_register') }}">S'inscrire</a>
+						</p>
+					</div>
+				</footer>
+		{% endif %}
+	{% endblock %}
