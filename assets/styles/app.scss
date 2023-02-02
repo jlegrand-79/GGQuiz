@@ -13,8 +13,10 @@ $redOptionStrong: #ea1e61;
 $greenOption: #12d18e;
 $greenOptionStrong: #00b777;
 $yellowOption: #ff981f;
-$yellwOptionStrong: #f48400;
+$yellowOptionStrong: #f48400;
 
+$darkenDanger: darken(#f75555, 20);
+$darkenSuccess: darken(#12d18e, 20);
 
 // the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";
@@ -87,7 +89,17 @@ p {
 
 .option.yellow {
     background-color: $yellowOption;
-    box-shadow: $yellwOptionStrong 0.2em 0.2em;
+    box-shadow: $yellowOptionStrong 0.2em 0.2em;
+}
+
+.option.wrong {
+    background-color: $danger;
+    box-shadow: $darkenDanger 0.2em 0.2em;
+}
+
+.option.correct {
+    background-color: $success;
+    box-shadow: $darkenSuccess 0.2em 0.2em;
 }
 
 .quiz-cover {
