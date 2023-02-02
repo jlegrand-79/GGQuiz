@@ -22,8 +22,10 @@ class HomeController extends AbstractController
     public function quiz(QuestionRepository $questionRepository): Response
     {
         $questions = $questionRepository->findAll();
+        $nbOfQuestions = count($questions);
         return $this->render('home/quiz.html.twig', [
             'question' => $questions[0],
+            'questions_count' => $nbOfQuestions
         ]);
     }
 }

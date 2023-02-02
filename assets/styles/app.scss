@@ -132,3 +132,15 @@ p {
     margin-top: 0;
     margin-bottom: 2em;
 }
+
+.quiz-page {
+    position: relative;
+    top: 80px;
+}
+
+.quiz-pagination {
+    color: $primary;
+    margin-top: 2em;
+    margin-bottom: 0;
+    font-weight: bold;
+}

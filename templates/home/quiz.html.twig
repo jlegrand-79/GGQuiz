@@ -8,15 +8,23 @@
 {% endblock %}
 
 {% block body %}
-	<main class="container p-0 text-center">
-		<h1>Quiz Astérix</h1>
+	<main class="container quiz-page p-0 text-center">
 		<div class="row justify-content-center m-auto">
-			<div class="col-12">
+			<div class="col-10">
+				<h1>Quiz</h1>
+			</div>
+		</div>
+
+		<div class="row justify-content-center m-auto">
+			<div class="col-10">
 				<img src="{{ asset('build/images/asterix.svg') }}" alt="Astérix" class="quiz-cover">
 			</div>
-			<div class="col-12">
+		</div>
+
+		<div class="row justify-content-center m-auto">
+			<div class="col-10">
 				<h2>
-					Connaissez-vous bien les aventures des gaulois les plus célèbres du monde ?<br>
+					Connaissez-vous bien les aventures des gaulois les plus célèbres du monde ?
 				</h2>
 				<p>
 					Nous vous proposons un quiz autour de l'univers d'Astérix et Obélix afin de nous replonger dans les bandes dessinées, les films d'animation et les films de la franchise.<br>
@@ -26,16 +34,28 @@
 				</p>
 			</div>
 		</div>
-		<div class="col-12">
-			{% if is_granted("ROLE_ADMIN")%}
-				<a href="{{ path('app_question_index') }}">
-					<button class="btn btn-primary">ADMINISTRER</button>
-				</a>
-			{% else %}
-				<a href="{{ path('app_quiz_question', {'id': question.id}) }}">
-					<button class="btn btn-primary">COMMENCER</button>
-				</a>
-			{% endif %}
+
+		<div class="row justify-content-center m-auto">
+			<div class="col-10">
+				<h2>
+					Nombre de questions :
+				</h2>
+				<p>{{ questions_count }}
+				</p>
+			</div>
+		</div>
+		<div class="row justify-content-center m-auto">
+			<div class="col-10">
+				{% if is_granted("ROLE_ADMIN")%}
+					<a href="{{ path('app_question_index') }}">
+						<button class="btn btn-primary">ADMINISTRER</button>
+					</a>
+				{% else %}
+					<a href="{{ path('app_quiz_question', {'id': question.id}) }}">
+						<button class="btn btn-primary">COMMENCER</button>
+					</a>
+				{% endif %}
+			</div>
 		</div>
 	</main>
 {% endblock %}
