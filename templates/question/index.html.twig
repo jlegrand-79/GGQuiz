@@ -1,47 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Question index{% endblock %}
+{% block title %}Liste des questions
+{% endblock %}
+
+{% block header %}
+	{% include '_navbar.html.twig' %}
+{% endblock %}
 
 {% block body %}
-    <h1>Question index</h1>
+	<main class="admin-pages m-auto">
+		<h1>Liste des questions</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Question</th>
-                <th>Answer1</th>
-                <th>Answer2</th>
-                <th>Answer3</th>
-                <th>Answer4</th>
-                <th>Picture</th>
-                <th>CorrectAnswer</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for question in questions %}
-            <tr>
-                <td>{{ question.id }}</td>
-                <td>{{ question.question }}</td>
-                <td>{{ question.answer1 }}</td>
-                <td>{{ question.answer2 }}</td>
-                <td>{{ question.answer3 }}</td>
-                <td>{{ question.answer4 }}</td>
-                <td>{{ question.picture }}</td>
-                <td>{{ question.correctAnswer }}</td>
-                <td>
-                    <a href="{{ path('app_question_show', {'id': question.id}) }}">show</a>
-                    <a href="{{ path('app_question_edit', {'id': question.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_question_new') }}">Create new</a>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Numéro</th>
+					<th>Question</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for question in questions %}
+					<tr>
+						<td>{{ question.number }}</td>
+						<td>{{ question.question }}</td>
+						<td>
+							<a href="{{ path('app_question_show', {'id': question.id}) }}">voir</a>
+							<a href="{{ path('app_question_edit', {'id': question.id}) }}">modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="9">aucun enregistrement</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<a href="{{ path('app_question_new') }}">
+			<button class="btn btn-primary" type="submit">{{ button_label|default('Nouvelle question') }}</button>
+		</a>
+	</main>
 {% endblock %}

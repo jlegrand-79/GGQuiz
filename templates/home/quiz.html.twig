@@ -48,7 +48,7 @@
 			<div class="col-10">
 				{% if is_granted("ROLE_ADMIN")%}
 					<a href="{{ path('app_question_index') }}">
-						<button class="btn btn-primary">ADMINISTRER</button>
+						<button class="btn btn-primary">MODIFIER CE QUIZ</button>
 					</a>
 				{% else %}
 					<a href="{{ path('app_quiz_question', {'id': question.id}) }}">
