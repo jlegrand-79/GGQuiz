@@ -14,10 +14,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints\Length;
 
 #[Route('/question')]
+#[IsGranted('ROLE_ADMIN')]
 class QuestionController extends AbstractController
 {
     #[Route('/', name: 'app_question_index', methods: ['GET'])]
-    #[IsGranted('ROLE_ADMIN')]
     public function index(QuestionRepository $questionRepository): Response
     {
         return $this->render('question/index.html.twig', [
@@ -25,15 +25,7 @@ class QuestionController extends AbstractController
         ]);
     }
 
-    #[Route('/result', name: 'app_quiz_result')]
-    #[IsGranted('ROLE_USER')]
-    public function quizResult(): Response
-    {
-        return $this->render('question/quiz.result.html.twig');
-    }
-
     #[Route('/new', name: 'app_question_new', methods: ['GET', 'POST'])]
-    #[IsGranted('ROLE_ADMIN')]
     public function new(Request $request, QuestionRepository $questionRepository, UserInterface $user): Response
     {
         $question = new Question();
@@ -54,7 +46,6 @@ class QuestionController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_question_show', methods: ['GET'])]
-    #[IsGranted('ROLE_ADMIN')]
     public function show(Question $question): Response
     {
         return $this->render('question/show.html.twig', [
@@ -63,7 +54,6 @@ class QuestionController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_question_edit', methods: ['GET', 'POST'])]
-    #[IsGranted('ROLE_ADMIN')]
     public function edit(Request $request, Question $question, QuestionRepository $questionRepository): Response
     {
         $form = $this->createForm(QuestionType::class, $question);
@@ -82,7 +72,6 @@ class QuestionController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_question_delete', methods: ['POST'])]
-    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Question $question, QuestionRepository $questionRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $question->getId(), $request->request->get('_token'))) {

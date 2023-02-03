@@ -101,6 +101,12 @@ class GameController extends AbstractController
         ]);
     }
 
+    #[Route('/result', name: 'app_game_result')]
+    #[IsGranted('ROLE_USER')]
+    public function result(): Response
+    {
+        return $this->render('game/result.html.twig');
+    }
 
     #[Route('/{id}', name: 'app_game_show', methods: ['GET'])]
     #[IsGranted('ROLE_ADMIN')]
