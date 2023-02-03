@@ -51,7 +51,7 @@
 						<button class="btn btn-primary">MODIFIER CE QUIZ</button>
 					</a>
 				{% else %}
-					<a href="{{ path('app_quiz_question', {'id': question.id}) }}">
+					<a href="{{ path('app_game_question', {'number': question.number}) }}">
 						<button class="btn btn-primary">COMMENCER</button>
 					</a>
 				{% endif %}
