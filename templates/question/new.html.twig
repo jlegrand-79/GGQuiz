@@ -1,11 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Question{% endblock %}
+{% block title %}Nouvelle question
+{% endblock %}
+
+{% block header %}
+	{% include '_navbar.html.twig' %}
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Question</h1>
+	<main class="container question-form">
+		<h1>Nouvelle question</h1>
+		<div class="row">
+			<div class="col">
 
-    {{ include('question/_form.html.twig') }}
 
-    <a href="{{ path('app_question_index') }}">back to list</a>
-{% endblock %}
+				{{ include('question/_form.html.twig') }}
+			</div>
+		</div>
+
+		<a href="{{ path('app_question_index') }}">back to list</a>
+	{% endblock %}

@@ -18,12 +18,18 @@
 				<br>
 			{% endif %}
 			Have a Good Game !</h1>
+
 		{% if app.user %}
 			<a href="{{ path('app_quiz') }}">
 			{% else %}
 				<a href="{{ path('app_login') }}">
 				{% endif %}
-				<button class="btn btn-primary">JOUER</button>
+
+				{% if is_granted("ROLE_ADMIN")%}
+					<button class="btn btn-primary">ADMINISTRER</button>
+				{% else %}
+					<button class="btn btn-primary">JOUER</button>
+				{% endif %}
 			</a>
 		</main>
 		{% if app.user %}

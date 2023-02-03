@@ -1,50 +1,63 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Question{% endblock %}
+{% block title %}Question
+{% endblock %}
+
+{% block header %}
+	{% include '_navbar.html.twig' %}
+{% endblock %}
 
 {% block body %}
-    <h1>Question</h1>
+	<main class="admin-pages m-auto">
+		<h1>Question
+			{{ question.number }}</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ question.id }}</td>
-            </tr>
-            <tr>
-                <th>Question</th>
-                <td>{{ question.question }}</td>
-            </tr>
-            <tr>
-                <th>Answer1</th>
-                <td>{{ question.answer1 }}</td>
-            </tr>
-            <tr>
-                <th>Answer2</th>
-                <td>{{ question.answer2 }}</td>
-            </tr>
-            <tr>
-                <th>Answer3</th>
-                <td>{{ question.answer3 }}</td>
-            </tr>
-            <tr>
-                <th>Answer4</th>
-                <td>{{ question.answer4 }}</td>
-            </tr>
-            <tr>
-                <th>Picture</th>
-                <td>{{ question.picture }}</td>
-            </tr>
-            <tr>
-                <th>CorrectAnswer</th>
-                <td>{{ question.correctAnswer }}</td>
-            </tr>
-        </tbody>
-    </table>
+		{% if question.picture %}
+			<div class="row justify-content-center m-auto">
 
-    <a href="{{ path('app_question_index') }}">back to list</a>
+				<div class="col-10">
+					<img class="question-picture" src="{{ asset('build/images/' ~ question.picture) }}" alt="{{ question.answer1 }}">
+				</div>
+			</div>
+		{% endif %}
 
-    <a href="{{ path('app_question_edit', {'id': question.id}) }}">edit</a>
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Question</th>
+					<td>{{ question.question }}</td>
+				</tr>
+				<tr>
+					<th>Option 1</th>
+					<td>{{ question.answer1 }}</td>
+				</tr>
+				<tr>
+					<th>Option 2</th>
+					<td>{{ question.answer2 }}</td>
+				</tr>
+				<tr>
+					<th>Option 3</th>
+					<td>{{ question.answer3 }}</td>
+				</tr>
+				<tr>
+					<th>Option 4</th>
+					<td>{{ question.answer4 }}</td>
+				</tr>
+				<tr>
+					<th>Bonne option</th>
+					<td>{{ question.correctAnswer }}</td>
+				</tr>
+				<tr>
+					<th>Image</th>
+					<td>{{ question.picture }}</td>
+				</tr>
+			</tbody>
+		</table>
 
-    {{ include('question/_delete_form.html.twig') }}
+		<a href="{{ path('app_question_index') }}">Retour à la liste</a>
+
+		<a href="{{ path('app_question_edit', {'id': question.id}) }}">Modifier</a>
+
+		{{ include('question/_delete_form.html.twig') }}
+	</main>
 {% endblock %}
