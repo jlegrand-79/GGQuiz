@@ -29,10 +29,19 @@ class QuestionController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function quizShow(int $id, QuestionRepository $questionRepository): Response
     {
-        $questions = $questionRepository->findAll();
+        $questions = $questionRepository->findBy(
+            [],
+            ['number' => 'ASC'],
+        );
         $nbOfQuestions = count($questions);
         $question = $questionRepository->findOneById($id);
-        $nextQuestion = $questionRepository->findOneById($question->getId() + 1);
+        $questionIndex = array_search($question, $questions);
+
+        if ($questionIndex + 1 < $nbOfQuestions) {
+            $nextQuestion = $questions[$questionIndex + 1];
+        } else {
+            $nextQuestion = null;
+        }
 
         if (!$nextQuestion) {
             return $this->render('question/quiz.show.html.twig', [
