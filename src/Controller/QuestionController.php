@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints\Length;
 
 #[Route('/question')]
@@ -57,13 +58,14 @@ class QuestionController extends AbstractController
 
     #[Route('/new', name: 'app_question_new', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_ADMIN')]
-    public function new(Request $request, QuestionRepository $questionRepository): Response
+    public function new(Request $request, QuestionRepository $questionRepository, UserInterface $user): Response
     {
         $question = new Question();
         $form = $this->createForm(QuestionType::class, $question);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $question->setAuthor($user);
             $questionRepository->save($question, true);
 
             return $this->redirectToRoute('app_question_index', [], Response::HTTP_SEE_OTHER);

@@ -1,13 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Question{% endblock %}
+{% block title %}Modifier cette question
+{% endblock %}
+
+{% block header %}
+	{% include '_navbar.html.twig' %}
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Question</h1>
+	<main class="container question-form">
+		<h1>Modifier cette question</h1>
+		<div class="row">
+			<div class="col">
 
-    {{ include('question/_form.html.twig', {'button_label': 'Update'}) }}
+				{{ include('question/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+			</div>
+		</div>
 
-    <a href="{{ path('app_question_index') }}">back to list</a>
+		<a href="{{ path('app_question_index') }}">Revenir à la liste</a>
 
-    {{ include('question/_delete_form.html.twig') }}
-{% endblock %}
+		{{ include('question/_delete_form.html.twig') }}
+	{% endblock %}
