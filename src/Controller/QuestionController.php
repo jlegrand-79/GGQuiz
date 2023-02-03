@@ -25,39 +25,6 @@ class QuestionController extends AbstractController
         ]);
     }
 
-    #[Route('/quiz/{id}', name: 'app_quiz_question')]
-    #[IsGranted('ROLE_USER')]
-    public function quizShow(int $id, QuestionRepository $questionRepository): Response
-    {
-        $questions = $questionRepository->findBy(
-            [],
-            ['number' => 'ASC'],
-        );
-        $nbOfQuestions = count($questions);
-        $question = $questionRepository->findOneById($id);
-        $questionIndex = array_search($question, $questions);
-
-        if ($questionIndex + 1 < $nbOfQuestions) {
-            $nextQuestion = $questions[$questionIndex + 1];
-        } else {
-            $nextQuestion = null;
-        }
-
-        if (!$nextQuestion) {
-            return $this->render('question/quiz.show.html.twig', [
-                'question' => $question,
-                'questions_count' => $nbOfQuestions
-            ]);
-        }
-
-        return $this->render('question/quiz.show.html.twig', [
-            'question' => $question,
-            'next_question' => $nextQuestion,
-            'questions_count' => $nbOfQuestions
-        ]);
-    }
-
-
     #[Route('/result', name: 'app_quiz_result')]
     #[IsGranted('ROLE_USER')]
     public function quizResult(): Response

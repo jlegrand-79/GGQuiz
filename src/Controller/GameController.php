@@ -67,6 +67,41 @@ class GameController extends AbstractController
         return $this->redirectToRoute('app_game_index', [], Response::HTTP_SEE_OTHER);
     }
 
+    #[Route('/question/{number}', name: 'app_game_question')]
+    #[IsGranted('ROLE_USER')]
+    public function nextQuestion(int $number, QuestionRepository $questionRepository): Response
+    {
+        $questions = $questionRepository->findBy(
+            [],
+            ['number' => 'ASC'],
+        );
+        $nbOfQuestions = count($questions);
+        $question = $questionRepository->findOneBy([
+            'number' => $number,
+        ]);
+        $questionIndex = array_search($question, $questions);
+
+        if ($questionIndex + 1 < $nbOfQuestions) {
+            $nextQuestion = $questions[$questionIndex + 1];
+        } else {
+            $nextQuestion = null;
+        }
+
+        if (!$nextQuestion) {
+            return $this->render('game/question.show.html.twig', [
+                'question' => $question,
+                'questions_count' => $nbOfQuestions
+            ]);
+        }
+
+        return $this->render('game/question.show.html.twig', [
+            'question' => $question,
+            'next_question' => $nextQuestion,
+            'questions_count' => $nbOfQuestions
+        ]);
+    }
+
+
     #[Route('/{id}', name: 'app_game_show', methods: ['GET'])]
     #[IsGranted('ROLE_ADMIN')]
     public function show(Game $game): Response
