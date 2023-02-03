@@ -47,11 +47,17 @@
 					<th>Bonne option</th>
 					<td>{{ question.correctAnswer }}</td>
 				</tr>
-				<tr>
-					<th>Image</th>
-					<td>{{ question.picture }}</td>
-				</tr>
+				{% if question.picture %}
+					<tr>
+						<th>Image</th>
+						<td>{{ question.picture }}</td>
+					</tr>
+				{% endif %}
 			</tbody>
+			<tr>
+				<th>Auteur</th>
+				<td>{{ question.author.pseudo }}</td>
+			</tr>
 		</table>
 
 		<a href="{{ path('app_question_index') }}">Retour à la liste</a>
