@@ -77,6 +77,7 @@ class QuestionType extends AbstractType
                 'label_attr' => [
                     'class' => 'm-1 p-1'
                 ],
+                'required' => false,
             ])
             ->add('correctAnswer', ChoiceType::class, [
                 'attr' => [
