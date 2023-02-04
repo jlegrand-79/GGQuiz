@@ -60,6 +60,14 @@
 			</tr>
 		</table>
 
+		<div>
+			<ul>
+				{% for quiz in question.quizzes %}
+					<li>{{ quiz.name }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+
 		<a href="{{ path('app_question_index') }}">Retour à la liste</a>
 
 		<a href="{{ path('app_question_edit', {'id': question.id}) }}">Modifier</a>
