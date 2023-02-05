@@ -9,8 +9,7 @@
 
 {% block body %}
 	<main class="admin-pages m-auto">
-		<h1>Question
-			{{ question.number }}</h1>
+		<h1>{{ question.question }}</h1>
 
 		{% if question.picture %}
 			<div class="row justify-content-center m-auto">
@@ -24,42 +23,54 @@
 		<table class="table">
 			<tbody>
 				<tr>
-					<th>Question</th>
-					<td>{{ question.question }}</td>
+					<th>Option 1</th>
 				</tr>
 				<tr>
-					<th>Option 1</th>
 					<td>{{ question.answer1 }}</td>
 				</tr>
 				<tr>
 					<th>Option 2</th>
+				</tr>
+				<tr>
 					<td>{{ question.answer2 }}</td>
 				</tr>
 				<tr>
 					<th>Option 3</th>
+				</tr>
+				<tr>
 					<td>{{ question.answer3 }}</td>
 				</tr>
 				<tr>
 					<th>Option 4</th>
+				</tr>
+				<tr>
 					<td>{{ question.answer4 }}</td>
 				</tr>
 				<tr>
 					<th>Bonne option</th>
+				</tr>
+				<tr>
 					<td>{{ question.correctAnswer }}</td>
 				</tr>
 				{% if question.picture %}
 					<tr>
 						<th>Image</th>
+					</tr>
+					<tr>
 						<td>{{ question.picture }}</td>
 					</tr>
 				{% endif %}
 			</tbody>
 			<tr>
 				<th>Auteur</th>
+			</tr>
+			<tr>
 				<td>{{ question.author.pseudo }}</td>
 			</tr>
 			<tr>
 				<th>Dans quel(s) Quiz(zes) ?</th>
+			</tr>
+			<tr>
 				<td>
 					<div>
 						<ul class="list-group list-group-flush">
