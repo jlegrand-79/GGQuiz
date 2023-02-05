@@ -17,31 +17,31 @@
 				</span>
 				<br>
 			{% endif %}
-			Have a Good Game !</h1>
-
-		{% if app.user %}
-			<a href="{{ path('app_game_start') }}">
-			{% else %}
-				<a href="{{ path('app_login') }}">
-				{% endif %}
-
-				{% if is_granted("ROLE_ADMIN")%}
-					<button class="btn btn-primary">ADMINISTRER</button>
-				{% else %}
-					<button class="btn btn-primary">JOUER</button>
-				{% endif %}
+			Have a
+			<span class="text-primary">Good Game</span>
+			!
+		</h1>
+		{% if is_granted("ROLE_ADMIN")%}
+			<a href="{{ path('app_quiz_index') }}">
+				<button class="btn btn-primary">ADMINISTRATION</button>
 			</a>
-		</main>
-		{% if app.user %}
-			{% else %}
-				<footer>
-					<div>
-						<p>
-							<a href="{{ path('app_login') }}">S'identifier</a>
-							|
-							<a href="{{ path('app_register') }}">S'inscrire</a>
-						</p>
-					</div>
-				</footer>
+		{% else %}
+			<a href="{{ path('app_quiz_list') }}">
+				<button class="btn btn-primary">JOUER</button>
+			</a>
 		{% endif %}
-	{% endblock %}
+	</main>
+	<footer>
+		<div>
+			<p>
+				{% if app.user %}
+					<a href="{{ path('app_logout') }}">Se déconnecter</a>
+				{% else %}
+					<a href="{{ path('app_login') }}">S'identifier</a>
+					|
+					<a href="{{ path('app_register') }}">S'inscrire</a>
+				{% endif %}
+			</p>
+		</div>
+	</footer>
+{% endblock %}

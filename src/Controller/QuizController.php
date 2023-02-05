@@ -2,20 +2,25 @@
 
 namespace App\Controller;
 
+use App\Entity\Question;
 use App\Entity\Quiz;
 use App\Form\QuizType;
+use App\Repository\QuestionRepository;
 use App\Repository\QuizRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+use function PHPUnit\Framework\isEmpty;
+
 #[Route('/quiz')]
-#[IsGranted('ROLE_ADMIN')]
 class QuizController extends AbstractController
 {
     #[Route('/', name: 'app_quiz_index', methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function index(QuizRepository $quizRepository): Response
     {
         return $this->render('quiz/index.html.twig', [
@@ -23,7 +28,17 @@ class QuizController extends AbstractController
         ]);
     }
 
+    #[Route('/list', name: 'app_quiz_list', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
+    public function list(QuizRepository $quizRepository): Response
+    {
+        return $this->render('quiz/list.html.twig', [
+            'quizzes' => $quizRepository->findAll(),
+        ]);
+    }
+
     #[Route('/new', name: 'app_quiz_new', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function new(Request $request, QuizRepository $quizRepository): Response
     {
         $quiz = new Quiz();
@@ -43,7 +58,15 @@ class QuizController extends AbstractController
         ]);
     }
 
+    #[Route('/result', name: 'app_quiz_result')]
+    #[IsGranted('ROLE_USER')]
+    public function result(): Response
+    {
+        return $this->render('quiz/result.html.twig');
+    }
+
     #[Route('/{id}', name: 'app_quiz_show', methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function show(Quiz $quiz): Response
     {
         return $this->render('quiz/show.html.twig', [
@@ -51,7 +74,40 @@ class QuizController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}/start', name: 'app_quiz_start', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
+    public function start(Quiz $quiz): Response
+    {
+        $questions = $quiz->getQuestions();
+        return $this->render('quiz/start.html.twig', [
+            'quiz' => $quiz,
+        ]);
+    }
+
+    #[Route('/{quizId}/question/{questionId}', name: 'app_quiz_question')]
+    #[Entity('quiz', options: ['mapping' => ['quizId' => 'id']])]
+    #[Entity('question', options: ['mapping' => ['questionId' => 'id']])]
+    #[IsGranted('ROLE_USER')]
+    public function askQuestion(Quiz $quiz, int $questionId, QuestionRepository $questionRepository): Response
+    {
+        $question = $questionRepository->findOneById($questionId);
+        $nextQuestion = $questionRepository->findByIdAndQuizId($questionId + 1, $quiz->getId());
+        if (($nextQuestion != [])) {
+            return $this->render('question/ask.html.twig', [
+                'quiz' => $quiz,
+                'question' => $question,
+                'next_question' => $nextQuestion,
+            ]);
+        } else {
+            return $this->render('question/ask.html.twig', [
+                'quiz' => $quiz,
+                'question' => $question,
+            ]);
+        }
+    }
+
     #[Route('/{id}/edit', name: 'app_quiz_edit', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function edit(Request $request, Quiz $quiz, QuizRepository $quizRepository): Response
     {
         $form = $this->createForm(QuizType::class, $quiz);
@@ -70,6 +126,7 @@ class QuizController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_quiz_delete', methods: ['POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Quiz $quiz, QuizRepository $quizRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $quiz->getId(), $request->request->get('_token'))) {

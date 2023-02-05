@@ -336,7 +336,7 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'number' => 12,
-            'question' => 'Que signifie la dernière phrase de Dark Vador avant de mourir : «&nbsp;Tu l\'as déjà fait Luke&nbsp;» ?',
+            'question' => 'Que signifie la dernière phrase de Dark Vador avant de mourir : « Tu l\'as déjà fait Luke » ?',
             'answer1' => 'L\'avoir sauvé',
             'answer2' => 'L\'avoir retrouvé',
             'answer3' => 'L\'avoir trahi',

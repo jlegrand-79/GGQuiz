@@ -39,6 +39,22 @@ class QuestionRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * @return Question[] Returns an array of Question objects
+     */
+    public function findByIdAndQuizId(int $questionId, int $quizId): array
+    {
+        return $this->createQueryBuilder('q')
+            ->join('q.quizzes', 'z')
+            ->andWhere('z.id = :quiz')
+            ->setParameter('quiz', $quizId)
+            ->andWhere('q.id = :question')
+            ->setParameter('question', $questionId)
+            ->orderBy('q.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return Question[] Returns an array of Question objects
     //     */
