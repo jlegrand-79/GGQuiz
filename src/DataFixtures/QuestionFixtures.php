@@ -11,7 +11,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
 {
     const QUESTIONS = [
         [
-            'number' => 1,
             'question' => 'Quel est le métier d’Obélix dans les aventures d’Astérix et Obélix ?',
             'answer1' => 'Tailleur et livreur de menhirs',
             'answer2' => 'Chef de village',
@@ -23,7 +22,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
             'quiz' => 'asterix',
         ],
         [
-            'number' => 2,
             'question' => 'De quelle couleur est le pantalon du célèbre Astérix ?',
             'answer1' => 'Jaune',
             'answer2' => 'Marron',
@@ -35,7 +33,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
             'quiz' => 'asterix',
         ],
         [
-            'number' => 3,
             'question' => 'Qui est cette femme dans le village d’Astérix ?',
             'answer1' => 'Falbala',
             'answer2' => 'Bonemine',
@@ -47,7 +44,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
             'quiz' => 'asterix',
         ],
         [
-            'number' => 4,
             'question' => 'Quel est le nom du vendeur de poissons du village d’Astérix ?',
             'answer1' => 'Radius',
             'answer2' => 'Assurancetourix',
@@ -59,7 +55,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
             'quiz' => 'asterix',
         ],
         [
-            'number' => 5,
             'question' => 'Quel est l’instrument de musique préféré d’Assurancetourix dans Astérix ?',
             'answer1' => 'Une harpe',
             'answer2' => 'Une cithare',
@@ -71,7 +66,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
             'quiz' => 'asterix',
         ],
         // [
-        //     'number' => 6,
         //     'question' => 'Quel est le nom de l’époux de Falbala dans Astérix ?',
         //     'answer1' => 'Tragicomix',
         //     'answer2' => 'Cétautomatix',
@@ -83,7 +77,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'asterix',
         // ],
         // [
-        //     'number' => 7,
         //     'question' => 'Quel acteur interprétait en 2012 le rôle d’Astérix dans le film “Astérix et Obélix : Au service de sa Majesté” ?',
         //     'answer1' => 'Clovis Cornillac',
         //     'answer2' => 'Christian Clavier',
@@ -95,7 +88,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'asterix',
         // ],
         // [
-        //     'number' => 8,
         //     'question' => 'Comment se nomme le doyen du village d’Astérix ?',
         //     'answer1' => 'Panoramix',
         //     'answer2' => 'Abraracourcix',
@@ -107,7 +99,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'asterix',
         // ],
         // [
-        //     'number' => 9,
         //     'question' => 'Quel est le nom du personnage d’Astérix interprété au cinéma par Gérard Darmon dans Mission Cléopâtre ?',
         //     'answer1' => 'Numérobis',
         //     'answer2' => 'Amonbofis',
@@ -119,7 +110,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'asterix',
         // ],
         // [
-        //     'number' => 10,
         //     'question' => 'Laquelle de ces propositions ne désigne pas un album de BD Astérix issu de la collection classique ?',
         //     'answer1' => 'La Serpe d’or',
         //     'answer2' => 'Les Douze Travaux d’Astérix',
@@ -131,7 +121,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'asterix',
         // ],
         // [
-        //     'number' => 11,
         //     'question' => 'Dans l’album de BD “Astérix chez les Bretons”, quelle boisson remplace la potion magique ?',
         //     'answer1' => 'Du jus d’orange',
         //     'answer2' => 'Du thé',
@@ -143,7 +132,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'asterix',
         // ],
         // [
-        //     'number' => 12,
         //     'question' => 'Dans "Astérix et Obélix : Mission Cléopâtre", combien de temps est donné par la reine d’Égypte pour construire le plus beau des palais à Alexandrie ?',
         //     'answer1' => '3 jours',
         //     'answer2' => '3 mois',
@@ -155,7 +143,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'asterix',
         // ],
         // [
-        //     'number' => 13,
         //     'question' => 'Quel est le nom du faux devin qui profite de la crédulité des villageois d’Astérix découvert dans “Le Coup du menhir” ?',
         //     'answer1' => 'Prolix',
         //     'answer2' => 'Apollosix',
@@ -167,7 +154,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'asterix',
         // ],
         // [
-        //     'number' => 14,
         //     'question' => 'Dans les aventures d’Astérix, qui est le personnage d’Adrénaline ?',
         //     'answer1' => 'La fille de Vercingétorix',
         //     'answer2' => 'La fille d’Obélix',
@@ -179,7 +165,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'asterix',
         // ],
         // [
-        //     'number' => 15,
         //     'question' => 'Qui est le neveu du chef du village d’Astérix, Abraracourcix ?',
         //     'answer1' => 'Goudurix',
         //     'answer2' => 'Cicatrix',
@@ -191,7 +176,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'asterix',
         // ],
         // [
-        //     'number' => 16,
         //     'question' => 'Laquelle de ces épreuves n’est pas un des 12 Travaux d’Astérix ?',
         //     'answer1' => 'Vaincre Cylindric le Germain',
         //     'answer2' => 'Dormir sur la plaine des Trépassés',
@@ -203,7 +187,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'asterix',
         // ],
         [
-            'number' => 1,
             'question' => 'Combien de films Star Wars ont été réalisés par Georges Lucas ?',
             'answer1' => '1',
             'answer2' => '2',
@@ -215,7 +198,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
             'quiz' => 'starwars',
         ],
         [
-            'number' => 2,
             'question' => 'Quel nom porte le vaisseau spatial du contrebandier Han Solo ?',
             'answer1' => 'Faucon Millénium',
             'answer2' => 'Anneau Solaire',
@@ -227,7 +209,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
             'quiz' => 'starwars',
         ],
         [
-            'number' => 3,
             'question' => 'Sur quelle planète vit Anakin avant de partir rejoindre les Jedi ?',
             'answer1' => 'Dagobah',
             'answer2' => 'Tatooine',
@@ -239,7 +220,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
             'quiz' => 'starwars',
         ],
         [
-            'number' => 4,
             'question' => 'Sur quelle planète Luke est-il parti pour apprendre à devenir un véritable Jedi ?',
             'answer1' => 'Utapau',
             'answer2' => 'Naboo',
@@ -251,7 +231,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
             'quiz' => 'starwars',
         ],
         [
-            'number' => 5,
             'question' => 'Contre qui Han Solo remporte-t-il le Faucon Millénium lors d\'une partie de sabacc ?',
             'answer1' => 'Watto',
             'answer2' => 'Jabba le Hutt',
@@ -263,7 +242,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
             'quiz' => 'starwars',
         ],
         // [
-        //     'number' => 6,
         //     'question' => 'Quel célèbre chasseur de primes a été engagé par Dark Vador pour traquer Han Solo ?',
         //     'answer1' => 'Jabba le Hutt',
         //     'answer2' => 'Boba Fett',
@@ -275,7 +253,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'starwars',
         // ],
         // [
-        //     'number' => 7,
         //     'question' => 'Une fois mesurée, quelle molécule permet de savoir si un individu peut être un Jedi ?',
         //     'answer1' => 'Meti-chlorien',
         //     'answer2' => 'Midi-chloriens',
@@ -287,7 +264,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'starwars',
         // ],
         // [
-        //     'number' => 8,
         //     'question' => 'Qui fait tomber le chasseur de primes Boba Fett dans la gueule du monstre des sables Sarlacc dans le film Le Retour du Jedi ?',
         //     'answer1' => 'Dark Vador',
         //     'answer2' => 'Luke Skywalker',
@@ -299,7 +275,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'starwars',
         // ],
         // [
-        //     'number' => 9,
         //     'question' => 'Quel taux de midi-chloriens Anakin possède-t-il lorsque Qui-Gon l\'analyse la première fois ?',
         //     'answer1' => 'Plus de 1 000',
         //     'answer2' => 'Plus de 5 000',
@@ -311,7 +286,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'starwars',
         // ],
         // [
-        //     'number' => 10,
         //     'question' => 'Quel mystique de la connaissance est le maître de Dark Sidious ?',
         //     'answer1' => 'Dark Bane',
         //     'answer2' => 'Dark Vador',
@@ -323,7 +297,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'starwars',
         // ],
         // [
-        //     'number' => 11,
         //     'question' => 'Quel apprenti Sith Obi-Wan va-t-il tuer en vengeant la mort de son maître ?',
         //     'answer1' => 'Dark Leouf',
         //     'answer2' => 'Dark Sidious',
@@ -335,7 +308,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'starwars',
         // ],
         // [
-        //     'number' => 12,
         //     'question' => 'Que signifie la dernière phrase de Dark Vador avant de mourir : « Tu l\'as déjà fait Luke » ?',
         //     'answer1' => 'L\'avoir sauvé',
         //     'answer2' => 'L\'avoir retrouvé',
@@ -347,7 +319,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'starwars',
         // ],
         // [
-        //     'number' => 13,
         //     'question' => 'Dans « Star Wars », de George Lucas, qui tue le chancelier Palpatine alias Dark Sidious ?',
         //     'answer1' => 'La princesse Leia',
         //     'answer2' => 'Luke Skywalker',
@@ -359,7 +330,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'starwars',
         // ],
         // [
-        //     'number' => 14,
         //     'question' => 'En quelle année est sorti au cinéma le premier volet de Star Wars sous le nom "La Guerre des Étoiles" ?',
         //     'answer1' => '1975',
         //     'answer2' => '1977',
@@ -371,7 +341,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'starwars',
         // ],
         // [
-        //     'number' => 15,
         //     'question' => 'À partir de quelle bataille peut-on mesurer la chronologie dans « Star Wars » ?',
         //     'answer1' => 'Bataille de Yavin',
         //     'answer2' => 'Bataille de Jaku',
@@ -383,7 +352,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'starwars',
         // ],
         // [
-        //     'number' => 16,
         //     'question' => 'Sur quelle planète Ben Solo rencontre-t-il Palpatine ?',
         //     'answer1' => 'Exegol',
         //     'answer2' => 'Mustafar',
@@ -395,7 +363,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
         //     'quiz' => 'starwars',
         // ],
         // [
-        //     'number' => 17,
         //     'question' => 'Qui brûle les ruines Jedi sur Ahch-To ?',
         //     'answer1' => 'Dark Vador',
         //     'answer2' => 'Luke Skywalker',
@@ -413,7 +380,6 @@ class QuestionFixtures extends Fixture implements DependentFixtureInterface
 
         foreach (self::QUESTIONS as $key => $value) {
             $question = new Question();
-            $question->setNumber(self::QUESTIONS[$key]['number']);
             $question->setQuestion(self::QUESTIONS[$key]['question']);
             $question->setAnswer1(self::QUESTIONS[$key]['answer1']);
             $question->setAnswer2(self::QUESTIONS[$key]['answer2']);
