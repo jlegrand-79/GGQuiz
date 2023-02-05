@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Question;
+use App\Entity\Quiz;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -93,6 +95,20 @@ class QuestionType extends AbstractType
                     '3' => 3,
                     '4' => 4,
                 ]
+            ])
+            ->add('quizzes', EntityType::class, [
+                'required' => false,
+                'class' => Quiz::class,
+                'attr' => [
+                    'class' => 'form-check m-1 p-1',
+                ],
+                'choice_label' => 'name',
+                'label' => 'Ajouter à ce(s) Quiz(zes)',
+                'label_attr' => [
+                    'class' => 'm-1 p-1'
+                ],
+                'multiple' => true,
+                'expanded' => true,
             ]);
     }
 

@@ -131,6 +131,12 @@ p {
     top: 80px;
 }
 
+.quizz-picture {
+    max-width: 75%;
+    margin-top: 0;
+    margin-bottom: 2em;
+}
+
 .question-picture {
     max-width: 360px;
     max-width: 50vw;
@@ -169,4 +175,8 @@ p {
     top: 80px;
     width: 75%;
     max-width: 800px;
+}
+
+.quiz-card {
+    max-width: 480px;
 }

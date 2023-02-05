@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quiz
+	{{ quiz.name }}
+{% endblock %}
+
+{% block header %}
+	{% include '_navbar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+	<main class="admin-pages m-auto">
+		<h1>Quiz
+			{{ quiz.name }}
+			- Édition</h1>
+		<div class="row">
+			<div class="col">
+				{{ include('quiz/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+			</div>
+		</div>
+		<a href="{{ path('app_quiz_index') }}">Tous les Quiz</a>
+		{{ include('quiz/_delete_form.html.twig') }}
+		<p>
+			<a href="{{ path('app_admin') }}">Administration</a>
+		</p>
+	</main>
+{% endblock %}

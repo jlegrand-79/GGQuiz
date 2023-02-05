@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quiz
+	{{ quiz.name }}
+{% endblock %}
+
+{% block header %}
+	{% include '_navbar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+	<main class="container quiz-page p-0 text-center">
+		<div class="row justify-content-center m-auto">
+			<div class="col-10">
+				<h1>Quiz
+					{{ quiz.name }}</h1>
+			</div>
+		</div>
+
+		<div class="row justify-content-center m-auto">
+			<div class="col-10">
+				<img src="{{ asset('build/images/' ~ quiz.cover) }}" alt="{{ quiz.name }}" class="quiz-cover">
+			</div>
+		</div>
+
+		<div class="row justify-content-center m-auto">
+			<div class="col-10">
+				<h2>
+					{{ quiz.title }}
+				</h2>
+				<p>
+					{{ quiz.description }}
+				</p>
+			</div>
+		</div>
+
+		<div class="row justify-content-center m-auto">
+			<div class="col-10">
+				<h2>
+					Nombre de questions :
+				</h2>
+				<p>{{ quiz.questions|length }}
+				</p>
+			</div>
+		</div>
+		<div class="row justify-content-center m-auto">
+			<div class="col-10">
+				<a href="{{ path('app_quiz_question', {'quizId': quiz.id, 'questionId': quiz.questions.0.id}) }}">
+					<button class="btn btn-primary">COMMENCER</button>
+				</a>
+			</div>
+		</div>
+		<div>
+			<a href="{{ path('app_quiz_list') }}">Revenir à la liste</a>
+		</div>
+	</main>
+{% endblock %}

@@ -46,9 +46,13 @@ class Question
     #[ORM\Column]
     private ?int $number = null;
 
+    #[ORM\ManyToMany(targetEntity: Quiz::class, inversedBy: 'questions')]
+    private Collection $quizzes;
+
     public function __construct()
     {
         $this->answers = new ArrayCollection();
+        $this->quizzes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -190,6 +194,30 @@ class Question
     public function setNumber(int $number): self
     {
         $this->number = $number;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Quiz>
+     */
+    public function getQuizzes(): Collection
+    {
+        return $this->quizzes;
+    }
+
+    public function addToQuizzes(Quiz $quiz): self
+    {
+        if (!$this->quizzes->contains($quiz)) {
+            $this->quizzes->add($quiz);
+        }
+
+        return $this;
+    }
+
+    public function removeFromQuizzes(Quiz $quiz): self
+    {
+        $this->quizzes->removeElement($quiz);
 
         return $this;
     }

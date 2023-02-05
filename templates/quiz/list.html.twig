@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Choisissez votre quiz
+{% endblock %}
+
+{% block header %}
+	{% include '_navbar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+	<main class="container quiz-page p-0 text-center">
+		<h1>Choisissez votre quiz</h1>
+		<div class="row justify-content-center align-items-center m-auto">
+			{% for quiz in quizzes %}
+				<div class="card quiz-card m-3">
+					<div class="row no-gutters justify-content-center align-items-middle">
+						<div class="col-md-4">
+							<img class="card-img p-3" src="{{ asset('build/images/' ~ quiz.cover) }}" alt="{{ quiz.name }}">
+							<div>
+								<a href="{{ path('app_quiz_start', {'id': quiz.id}) }}" class="btn btn-primary m-0 mb-3">JOUER</a>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<h2 class="card-title">{{ quiz.name }}</h2>
+								<p class="card-text">{{ quiz.title }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% else %}
+				<div>
+					<td colspan="6">Aucun Quiz disponible pour le moment...</td>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</main>{% endblock %}

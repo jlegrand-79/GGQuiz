@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quiz
+	{{ quiz.name }}
+{% endblock %}
+
+{% block header %}
+	{% include '_navbar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+	<main class="admin-pages m-auto">
+		<div class="row text-center justify-content-center m-auto">
+			<div class="col">
+
+				<h1>Quiz
+					{{ quiz.name }}</h1>
+
+				<img class="quizz-picture" src="{{ asset('build/images/' ~ quiz.cover) }}" alt="{{ quiz.name }}">
+
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>Titre</th>
+						</tr>
+						<tr>
+							<td>{{ quiz.title }}</td>
+						</tr>
+						<tr>
+							<th>Description</th>
+						</tr>
+						<tr>
+							<td>{{ quiz.description }}</td>
+						</tr>
+						<tr>
+							<th>Auteur</th>
+						</tr>
+						<tr>
+							<td>{{ quiz.creator.pseudo }}</td>
+						</tr>
+						{% if quiz.questions is not empty %}
+							<tr>
+								<th>Questions</th>
+							</tr>
+							<tr>
+								<td>
+									<div>
+										<ul class="list-group list-group-flush">
+											{% for question in quiz.questions %}
+												<li class="list-group-item bg-light">{{ question.question }}</li>
+											{% endfor %}
+										</ul>
+									</div>
+								</td>
+							</tr>
+						{% endif %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<a href="{{ path('app_quiz_index') }}">Tous les Quiz</a>
+
+		<a href="{{ path('app_quiz_edit', {'id': quiz.id}) }}">Édition</a>
+
+		{{ include('quiz/_delete_form.html.twig') }}
+
+		<p>
+			<a href="{{ path('app_admin') }}">Administration</a>
+		</p>
+
+	</main>
+
+{% endblock %}
