@@ -12,12 +12,13 @@
 		<h1>Modifier cette question</h1>
 		<div class="row">
 			<div class="col">
-
 				{{ include('question/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 			</div>
 		</div>
-
-		<a href="{{ path('app_question_index') }}">Revenir à la liste</a>
-
+		<a href="{{ path('app_question_index') }}">Toutes les Questions</a>
 		{{ include('question/_delete_form.html.twig') }}
-	{% endblock %}
+		<p>
+			<a href="{{ path('app_admin') }}">Administration</a>
+		</p>
+	</main>
+{% endblock %}

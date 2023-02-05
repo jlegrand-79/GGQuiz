@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des questions
+{% block title %}Toutes les Questions
 {% endblock %}
 
 {% block header %}
@@ -9,29 +9,27 @@
 
 {% block body %}
 	<main class="admin-pages m-auto">
-		<h1>Liste des questions</h1>
+		<h1>Toutes les Questions</h1>
 
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Numéro</th>
-					<th>Question</th>
-					<th>actions</th>
+					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				{% for question in questions %}
 					<tr>
-						<td>{{ question.number }}</td>
 						<td>{{ question.question }}</td>
 						<td>
-							<a href="{{ path('app_question_show', {'id': question.id}) }}">voir</a>
-							<a href="{{ path('app_question_edit', {'id': question.id}) }}">modifier</a>
+							<a href="{{ path('app_question_show', {'id': question.id}) }}">Affichage</a>
+							<a href="{{ path('app_question_edit', {'id': question.id}) }}">Édition</a>
 						</td>
 					</tr>
 				{% else %}
 					<tr>
-						<td colspan="9">aucun enregistrement</td>
+						<td colspan="9">Aucune question pour le moment...</td>
 					</tr>
 				{% endfor %}
 			</tbody>
@@ -39,5 +37,9 @@
 		<a href="{{ path('app_question_new') }}">
 			<button class="btn btn-primary" type="submit">{{ button_label|default('Nouvelle question') }}</button>
 		</a>
+		<p>
+			<a href="{{ path('app_admin') }}">Administration</a>
+		</p>
+
 	</main>
 {% endblock %}

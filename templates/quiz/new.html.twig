@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouvelle question
+{% block title %}Nouveau Quiz
 {% endblock %}
 
 {% block header %}
@@ -8,14 +8,14 @@
 {% endblock %}
 
 {% block body %}
-	<main class="container question-form">
-		<h1>Nouvelle question</h1>
+	<main class="admin-pages m-auto">
+		<h1>Nouveau Quiz</h1>
 		<div class="row">
 			<div class="col">
-				{{ include('question/_form.html.twig') }}
+				{{ include('quiz/_form.html.twig') }}
 			</div>
 		</div>
-		<a href="{{ path('app_question_index') }}">Toutes les Questions</a>
+		<a href="{{ path('app_quiz_index') }}">Tous les Quiz</a>
 		<p>
 			<a href="{{ path('app_admin') }}">Administration</a>
 		</p>

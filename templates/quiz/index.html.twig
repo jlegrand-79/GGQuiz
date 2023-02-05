@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous les Quiz
+{% endblock %}
+
+{% block header %}
+	{% include '_navbar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+	<main class="admin-pages m-auto">
+
+		<h1>Tous les Quiz</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for quiz in quizzes %}
+					<tr>
+						<td>{{ quiz.name }}</td>
+						<td>
+							<a href="{{ path('app_quiz_show', {'id': quiz.id}) }}">Affichage</a>
+							|
+							<a href="{{ path('app_quiz_edit', {'id': quiz.id}) }}">Édition</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="6">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_quiz_new') }}">
+			<button class="btn btn-primary" type="submit">{{ button_label|default('Nouveau Quiz') }}</button>
+		</a>
+		<p>
+			<a href="{{ path('app_admin') }}">Administration</a>
+		</p>
+	</main>
+{% endblock %}
