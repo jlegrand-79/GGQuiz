@@ -8,31 +8,31 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Choisissez votre quiz</h1>
-
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Title</th>
-				<th>Cover</th>
-			</tr>
-		</thead>
-		<tbody>
+	<main class="container quiz-page p-0 text-center">
+		<h1>Choisissez votre quiz</h1>
+		<div class="row justify-content-center align-items-center m-auto">
 			{% for quiz in quizzes %}
-				<tr>
-					<td>{{ quiz.name }}</td>
-					<td>{{ quiz.title }}</td>
-					<td>{{ quiz.cover }}</td>
-					<td>
-						<a href="{{ path('app_quiz_start', {'id': quiz.id}) }}">JOUER</a>
-					</td>
-				</tr>
+				<div class="card quiz-card m-3">
+					<div class="row no-gutters justify-content-center align-items-middle">
+						<div class="col-md-4">
+							<img class="card-img p-3" src="{{ asset('build/images/' ~ quiz.cover) }}" alt="{{ quiz.name }}">
+							<div>
+								<a href="{{ path('app_quiz_start', {'id': quiz.id}) }}" class="btn btn-primary m-0 mb-3">JOUER</a>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<h2 class="card-title">{{ quiz.name }}</h2>
+								<p class="card-text">{{ quiz.title }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
 			{% else %}
-				<tr>
-					<td colspan="6">AUCUN QUIZ DISPONIBLE</td>
-				</tr>
+				<div>
+					<td colspan="6">Aucun Quiz disponible pour le moment...</td>
+				</div>
 			{% endfor %}
-		</tbody>
-	</table>
-{% endblock %}
+		</div>
+	</div>
+</main>{% endblock %}

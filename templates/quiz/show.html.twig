@@ -33,19 +33,27 @@
 							<td>{{ quiz.description }}</td>
 						</tr>
 						<tr>
-							<th>Questions</th>
+							<th>Auteur</th>
 						</tr>
 						<tr>
-							<td>
-								<div>
-									<ul class="list-group list-group-flush">
-										{% for question in quiz.questions %}
-											<li class="list-group-item bg-light">{{ question.question }}</li>
-										{% endfor %}
-									</ul>
-								</div>
-							</td>
+							<td>{{ quiz.creator.pseudo }}</td>
 						</tr>
+						{% if quiz.questions is not empty %}
+							<tr>
+								<th>Questions</th>
+							</tr>
+							<tr>
+								<td>
+									<div>
+										<ul class="list-group list-group-flush">
+											{% for question in quiz.questions %}
+												<li class="list-group-item bg-light">{{ question.question }}</li>
+											{% endfor %}
+										</ul>
+									</div>
+								</td>
+							</tr>
+						{% endif %}
 					</tbody>
 				</table>
 			</div>

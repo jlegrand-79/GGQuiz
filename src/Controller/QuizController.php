@@ -33,8 +33,15 @@ class QuizController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function list(QuizRepository $quizRepository): Response
     {
+        $allQuizzes = $quizRepository->findAll();
+        $quizzes = [];
+        foreach ($allQuizzes as $key => $value) {
+            if (count($value->getQuestions()) > 0) {
+                $quizzes[] = $value;
+            }
+        }
         return $this->render('quiz/list.html.twig', [
-            'quizzes' => $quizRepository->findAll(),
+            'quizzes' => $quizzes,
         ]);
     }
 
