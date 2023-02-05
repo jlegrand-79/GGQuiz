@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration
+{% endblock %}
+
+{% block header %}
+	{% include '_navbar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+	<main class="container text-center">
+		<h1>
+			Administration
+		</h1>
+		<a href="{{ path('app_quiz_index') }}">
+			<button class="btn btn-primary">Les Quiz</button>
+		</a>
+		<a href="{{ path('app_question_index') }}">
+			<button class="btn btn-primary">Les Questions</button>
+		</a>
+	</main>
+{% endblock %}

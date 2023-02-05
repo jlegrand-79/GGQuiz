@@ -22,7 +22,7 @@
 			!
 		</h1>
 		{% if is_granted("ROLE_ADMIN")%}
-			<a href="{{ path('app_quiz_index') }}">
+			<a href="{{ path('app_admin') }}">
 				<button class="btn btn-primary">ADMINISTRATION</button>
 			</a>
 		{% else %}

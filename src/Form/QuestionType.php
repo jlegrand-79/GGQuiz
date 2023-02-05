@@ -97,10 +97,16 @@ class QuestionType extends AbstractType
                 ]
             ])
             ->add('quizzes', EntityType::class, [
-                'required' => true,
+                'required' => false,
                 'class' => Quiz::class,
+                'attr' => [
+                    'class' => 'form-check m-1 p-1',
+                ],
                 'choice_label' => 'name',
-                'label' => 'Ajouter cette question au Quiz',
+                'label' => 'Ajouter à ce(s) Quiz(zes)',
+                'label_attr' => [
+                    'class' => 'm-1 p-1'
+                ],
                 'multiple' => true,
                 'expanded' => true,
             ]);

@@ -12,11 +12,12 @@
 		<h1>Nouvelle question</h1>
 		<div class="row">
 			<div class="col">
-
-
 				{{ include('question/_form.html.twig') }}
 			</div>
 		</div>
-
-		<a href="{{ path('app_question_index') }}">back to list</a>
-	{% endblock %}
+		<a href="{{ path('app_question_index') }}">Toutes les Questions</a>
+		<p>
+			<a href="{{ path('app_admin') }}">Administration</a>
+		</p>
+	</main>
+{% endblock %}

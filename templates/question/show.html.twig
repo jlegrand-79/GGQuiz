@@ -16,7 +16,7 @@
 			<div class="row justify-content-center m-auto">
 
 				<div class="col-10">
-					<img class="question-picture" src="{{ asset('build/images/' ~ question.picture) }}" alt="{{ question.answer1 }}">
+					<img class="question-picture" src="{{ asset('build/images/' ~ question.picture) }}" alt="{{ question.picture }}">
 				</div>
 			</div>
 		{% endif %}
@@ -58,20 +58,29 @@
 				<th>Auteur</th>
 				<td>{{ question.author.pseudo }}</td>
 			</tr>
+			<tr>
+				<th>Dans quel(s) Quiz(zes) ?</th>
+				<td>
+					<div>
+						<ul class="list-group list-group-flush">
+							{% for quiz in question.quizzes %}
+								<li class="list-group-item bg-light">{{ quiz.name }}</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</td>
+			</tr>
 		</table>
-
-		<div>
-			<ul>
-				{% for quiz in question.quizzes %}
-					<li>{{ quiz.name }}</li>
-				{% endfor %}
-			</ul>
-		</div>
 
 		<a href="{{ path('app_question_index') }}">Retour à la liste</a>
 
 		<a href="{{ path('app_question_edit', {'id': question.id}) }}">Modifier</a>
 
 		{{ include('question/_delete_form.html.twig') }}
+
+		<p>
+			<a href="{{ path('app_admin') }}">Administration</a>
+		</p>
+
 	</main>
 {% endblock %}

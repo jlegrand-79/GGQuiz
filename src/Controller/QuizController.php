@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 use function PHPUnit\Framework\isEmpty;
@@ -39,14 +40,14 @@ class QuizController extends AbstractController
 
     #[Route('/new', name: 'app_quiz_new', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_ADMIN')]
-    public function new(Request $request, QuizRepository $quizRepository): Response
+    public function new(Request $request, QuizRepository $quizRepository, UserInterface $user): Response
     {
         $quiz = new Quiz();
         $form = $this->createForm(QuizType::class, $quiz);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $quiz->setCreator($this->getUser());
+            $quiz->setCreator($user);
             $quizRepository->save($quiz, true);
 
             return $this->redirectToRoute('app_quiz_index', [], Response::HTTP_SEE_OTHER);
@@ -78,7 +79,6 @@ class QuizController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function start(Quiz $quiz): Response
     {
-        $questions = $quiz->getQuestions();
         return $this->render('quiz/start.html.twig', [
             'quiz' => $quiz,
         ]);
@@ -91,17 +91,42 @@ class QuizController extends AbstractController
     public function askQuestion(Quiz $quiz, int $questionId, QuestionRepository $questionRepository): Response
     {
         $question = $questionRepository->findOneById($questionId);
-        $nextQuestion = $questionRepository->findByIdAndQuizId($questionId + 1, $quiz->getId());
+        $questions = $quiz->getQuestions();
+        $questionArray = [];
+        foreach ($questions as $key => $value) {
+            $questionArray[] = $value;
+        }
+
+        $questionIndex = 0;
+        foreach ($questionArray as $key => $value) {
+            if ($value->getId() == $questionId) {
+                $questionIndex = $key;
+                break;
+            }
+        }
+
+        $questionPosition = $questionIndex + 1;
+
+        $quizLength = count($questionArray);
+        if ($questionIndex + 1 < $quizLength) {
+            $nextQuestionId = $questionArray[$questionIndex + 1]->getId();
+            $nextQuestion = $questionRepository->findById($nextQuestionId);
+        } else {
+            $nextQuestion = [];
+        }
+
         if (($nextQuestion != [])) {
             return $this->render('question/ask.html.twig', [
                 'quiz' => $quiz,
                 'question' => $question,
+                'question_position' => $questionPosition,
                 'next_question' => $nextQuestion,
             ]);
         } else {
             return $this->render('question/ask.html.twig', [
                 'quiz' => $quiz,
                 'question' => $question,
+                'question_position' => $questionPosition,
             ]);
         }
     }
