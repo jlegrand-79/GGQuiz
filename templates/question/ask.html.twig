@@ -26,19 +26,20 @@
 		</div>
 		{% if question.picture %}
 			<div class="row justify-content-center m-auto">
-
 				<div class="col-10">
 					<img class="question-picture" src="{{ asset('build/images/' ~ question.picture) }}" alt="{{ question.answer1 }}">
 				</div>
 			</div>
 		{% endif %}
+
 		<div class="row colored-options justify-content-center m-auto">
 			<div class="col-10 col-lg-5 option blue" id="answer1">{{ question.answer1 }}</div>
 			<div class="col-10 col-lg-5 option red" id="answer2">{{ question.answer2 }}</div>
 			<div class="col-10 col-lg-5 option green" id="answer3">{{ question.answer3 }}</div>
 			<div class="col-10 col-lg-5 option yellow" id="answer4">{{ question.answer4 }}</div>
-			<div class="d-none" id="correct-answer">{{ question.correctAnswer }}</div>
+			<div class="d-none" id="correctAnswerDiv">{{ question.correctAnswer }}</div>
 		</div>
+
 		{% if next_question is defined %}
 			<div class="row justify-content-center m-auto">
 				<div class="col-10">
@@ -57,4 +58,29 @@
 			</div>
 		{% endif %}
 	</main>
+
+	<div class="toast-container position-fixed bottom-0 start-50 bottom-0 start-50 translate-middle-x p-3">
+		<div id="correctAnswerToast" class="toast bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-body">
+				<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+				<div class="m-0">Bonne réponse</div>
+			</div>
+			<div class="toast-header">
+				<img src="{{ asset('build/images/score-5.jpg') }}" class="toast-picture rounded me-2" alt="Bonne réponse !">
+			</div>
+		</div>
+	</div>
+
+	<div class="toast-container position-fixed bottom-0 start-50 bottom-0 start-50 translate-middle-x p-3">
+		<div id="wrongAnswerToast" class="toast bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-body">
+				<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+				<div class="m-0">Mauvaise réponse</div>
+			</div>
+			<div class="toast-header">
+				<img src="{{ asset('build/images/score-1.jpg') }}" class="toast-picture rounded me-2" alt="Mauvaise réponse !">
+			</div>
+		</div>
+	</div>
+
 {% endblock %}

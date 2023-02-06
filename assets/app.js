@@ -5,17 +5,23 @@
  * (and its CSS file) in your base layout (base.html.twig).
  */
 
+require("bootstrap");
+
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
 
 // start the Stimulus application
 import './bootstrap';
 
-let answer1Div = document.getElementById('answer1');
-let answer2Div = document.getElementById('answer2');
-let answer3Div = document.getElementById('answer3');
-let answer4Div = document.getElementById('answer4');
-let correctAnswerDiv = document.getElementById('correct-answer');
+import { Toast } from "bootstrap";
+
+const answer1Div = document.getElementById('answer1');
+const answer2Div = document.getElementById('answer2');
+const answer3Div = document.getElementById('answer3');
+const answer4Div = document.getElementById('answer4');
+const correctAnswerDiv = document.getElementById('correctAnswerDiv');
+const correctAnswerToast = document.getElementById('correctAnswerToast')
+const wrongAnswerToast = document.getElementById('wrongAnswerToast')
 let correctAnswer = correctAnswerDiv.textContent;
 let answer = '';
 
@@ -54,40 +60,48 @@ if (answer1Div && answer2Div && answer3Div && answer4Div && correctAnswerDiv) {
     answer1Div.addEventListener('click', function () {
         answer = '1';
         if (answer == correctAnswer) {
-            alert('Bonne réponse !');
+            const toast = new Toast(correctAnswerToast);
+            toast.show();
             changeOptionsColor();
         } else {
-            alert('Mauvaise réponse !');
+            const toast = new Toast(wrongAnswerToast)
+            toast.show()
             changeOptionsColor();
         }
     })
     answer2Div.addEventListener('click', function () {
         answer = '2';
         if (answer == correctAnswer) {
-            alert('Bonne réponse !');
+            const toast = new Toast(correctAnswerToast);
+            toast.show();
             changeOptionsColor();
         } else {
-            alert('Mauvaise réponse !');
+            const toast = new Toast(wrongAnswerToast)
+            toast.show()
             changeOptionsColor();
         }
     })
     answer3Div.addEventListener('click', function () {
         answer = '3';
         if (answer == correctAnswer) {
-            alert('Bonne réponse !');
+            const toast = new Toast(correctAnswerToast);
+            toast.show();
             changeOptionsColor();
         } else {
-            alert('Mauvaise réponse !');
+            const toast = new Toast(wrongAnswerToast)
+            toast.show()
             changeOptionsColor();
         }
     })
     answer4Div.addEventListener('click', function () {
         answer = '4';
         if (answer == correctAnswer) {
-            alert('Bonne réponse !');
+            const toast = new Toast(correctAnswerToast);
+            toast.show();
             changeOptionsColor();
         } else {
-            alert('Mauvaise réponse !');
+            const toast = new Toast(wrongAnswerToast)
+            toast.show()
             changeOptionsColor();
         }
     })
