@@ -52,21 +52,21 @@ class QuizType extends AbstractType
                     'class' => 'm-1 p-1'
                 ],
             ])
-            // ->add('questions', EntityType::class, [
-            //     'required' => false,
-            //     'class' => Question::class,
-            //     'attr' => [
-            //         'class' => 'form-check m-1 p-1',
-            //     ],
-            //     'choice_label' => 'question',
-            //     'label' => 'Questions',
-            //     'label_attr' => [
-            //         'class' => 'm-1 p-1'
-            //     ],
-            //     'multiple' => true,
-            //     'expanded' => true,
-            // ])
-            ;
+            ->add('questions', EntityType::class, [
+                'required' => false,
+                'class' => Question::class,
+                'attr' => [
+                    'class' => 'form-check m-1 p-1',
+                ],
+                'choice_label' => 'question',
+                'label' => 'Ajouter ces questions',
+                'label_attr' => [
+                    'class' => 'form-check-label m-1 p-1'
+                ],
+                'multiple' => true,
+                'expanded' => true,
+                'by_reference' => false,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
