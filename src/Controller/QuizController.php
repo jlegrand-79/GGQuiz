@@ -16,6 +16,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\throwException;
 
 #[Route('/quiz')]
 class QuizController extends AbstractController
@@ -93,7 +94,6 @@ class QuizController extends AbstractController
 
     #[Route('/{quizId}/question/{questionId}', name: 'app_quiz_question')]
     #[Entity('quiz', options: ['mapping' => ['quizId' => 'id']])]
-    #[Entity('question', options: ['mapping' => ['questionId' => 'id']])]
     #[IsGranted('ROLE_USER')]
     public function askQuestion(Quiz $quiz, int $questionId, QuestionRepository $questionRepository): Response
     {
@@ -106,10 +106,19 @@ class QuizController extends AbstractController
 
         $questionIndex = 0;
         foreach ($questionArray as $key => $value) {
+            $questionIndex = null;
             if ($value->getId() == $questionId) {
                 $questionIndex = $key;
                 break;
+            } else {
+                continue;
             }
+        }
+
+        if (!isset($questionArray[$questionIndex])) {
+            throw $this->createNotFoundException(
+                'GG, mais le hors piste n\'est pas autorisé ici !'
+            );
         }
 
         $questionPosition = $questionIndex + 1;
@@ -137,6 +146,53 @@ class QuizController extends AbstractController
             ]);
         }
     }
+
+    // #[Route('/{quizId}/question/{questionId}', name: 'app_quiz_question')]
+    // #[Entity('quiz', options: ['mapping' => ['quizId' => 'id']])]
+    // #[Entity('question', options: ['mapping' => ['questionId' => 'id']])]
+    // #[IsGranted('ROLE_USER')]
+    // public function askQuestion(Quiz $quiz, int $questionId, QuestionRepository $questionRepository): Response
+    // {
+    //     $question = $questionRepository->findOneById($questionId);
+    //     $questions = $quiz->getQuestions();
+    //     $questionArray = [];
+    //     foreach ($questions as $key => $value) {
+    //         $questionArray[] = $value;
+    //     }
+
+    //     $questionIndex = 0;
+    //     foreach ($questionArray as $key => $value) {
+    //         if ($value->getId() == $questionId) {
+    //             $questionIndex = $key;
+    //             break;
+    //         }
+    //     }
+
+    //     $questionPosition = $questionIndex + 1;
+
+    //     $quizLength = count($questionArray);
+    //     if ($questionIndex + 1 < $quizLength) {
+    //         $nextQuestionId = $questionArray[$questionIndex + 1]->getId();
+    //         $nextQuestion = $questionRepository->findById($nextQuestionId);
+    //     } else {
+    //         $nextQuestion = [];
+    //     }
+
+    //     if (($nextQuestion != [])) {
+    //         return $this->render('question/ask.html.twig', [
+    //             'quiz' => $quiz,
+    //             'question' => $question,
+    //             'question_position' => $questionPosition,
+    //             'next_question' => $nextQuestion,
+    //         ]);
+    //     } else {
+    //         return $this->render('question/ask.html.twig', [
+    //             'quiz' => $quiz,
+    //             'question' => $question,
+    //             'question_position' => $questionPosition,
+    //         ]);
+    //     }
+    // }
 
     #[Route('/{id}/edit', name: 'app_quiz_edit', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_ADMIN')]
