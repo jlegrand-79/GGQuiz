@@ -97,10 +97,11 @@ class QuestionType extends AbstractType
                 'choice_label' => 'name',
                 'label' => 'Ajouter à ce(s) Quiz(zes)',
                 'label_attr' => [
-                    'class' => 'm-1 p-1'
+                    'class' => 'form-check-label m-1 p-1'
                 ],
                 'multiple' => true,
                 'expanded' => true,
+                'by_reference' => true,
             ]);
     }
 

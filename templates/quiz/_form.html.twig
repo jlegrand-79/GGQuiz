@@ -16,9 +16,12 @@
 	{{ form_row(form.cover) }}
 </div>
 
-{# <div class="form-group">
-	{{ form_row(form.questions, {'attr': {'class': 'd-flex flex-column flex-wrap justify-content-center align-items-center'}}) }}
-</div> #}
+<div class="form-group">
+	<fieldset>
+		{{ form_label(form.questions) }}
+		{{ form_widget(form.questions, {'attr': {'class': 'd-grid'}}) }}
+	</fieldset>
+</div>
 
 <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
 
